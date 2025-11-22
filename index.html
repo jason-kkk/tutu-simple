@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina - 极简修图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            },
+            colors: {
+              glass: {
+                border: 'rgba(255, 255, 255, 0.2)',
+                surface: 'rgba(255, 255, 255, 0.65)',
+                highlight: 'rgba(255, 255, 255, 0.5)',
+              }
+            },
+            backdropBlur: {
+              xs: '2px',
+            },
+            boxShadow: {
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+              'glass-hover': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+              'inner-light': 'inset 0 0 0 1px rgba(255, 255, 255, 0.3)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        /* Vibrant Apple-style mesh gradient background */
+        background-color: #f0f2f5;
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+          radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 100vh;
+        color: #1d1d1f;
+      }
+
+      /* Glassmorphism Utilities */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+      }
+
+      .glass-button {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.2s ease;
+      }
+      
+      .glass-button:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: translateY(-1px);
+      }
+
+      /* Custom Range Slider Styling - Apple Style */
+      input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+        background: transparent;
+      }
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: #FFFFFF;
+        border: 0.5px solid rgba(0,0,0,0.04);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15), 0 1px 1px rgba(0,0,0,0.1);
+        cursor: pointer;
+        margin-top: -10px;
+        transition: transform 0.1s ease;
+      }
+      input[type=range]::-webkit-slider-thumb:hover {
+        transform: scale(1.05);
+      }
+      input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: rgba(0,0,0,0.1);
+        border-radius: 2px;
+      }
+      
+      /* Hide scrollbar for category nav */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.4s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
